@@ -29,7 +29,8 @@ class SupportersController < ApplicationController
     def show
         @supporter = Supporter.find(params[:id])
         session[:user] = @supporter.id
-        @requests = FinancialRequest.where(status: "active")
+        @stats = @supporter.statistics
+        @requests = FinancialRequest.where(status: "active").order("created_at DESC")
         @myrequests = RequestResponse.where(supporter_id: @supporter.id)
     end
 

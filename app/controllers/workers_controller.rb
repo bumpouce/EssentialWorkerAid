@@ -33,6 +33,7 @@ class WorkersController < ApplicationController
         @worker = Worker.find(params[:id])
         session[:user] = @worker
         @request = FinancialRequest.new
+        @stats = @worker.statistics
         @all_requests = @worker.financial_requests.order("created_at DESC")
     end
 

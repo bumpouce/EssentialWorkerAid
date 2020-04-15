@@ -1,22 +1,26 @@
 <h1> Welcome, <%= @supporter.full_name%> </h1>
-<br>
+<i> You have provided $<%=@stats%> in support!</i>
+<br><br>
 <h2> Available Requests </h2>
+<i>Most recent needs are listed first.</i>
 <ul>
 <% @requests.each do |request|%>
 <li>
 <%=request.worker.username%> requested $<%=request.money_needed%> to <%=request.venmo_name%><br>
 <%=request.title%> | <%=request.description%><br>
-Status: <b><%=request.status%> <%=link_to "Fill request", new_request_response_path(:request_id=>request.id)%></b>
+Status: <b><%=request.status%><br> <%=link_to "Support this person", new_request_response_path(:request_id=>request.id)%></b><br><br>
 </li>
 <%end%>
 </ul>
 
 
-<h2> Your Fulilled/Pending Actions </h2>
+<h2> Your Pending/Received Support </h2>
+<i>Please note that "pending" does not mean your support has not been received,<br>
+it only means it has not been acknowledged in this app.</i>
 <ul>
 <% @myrequests.each do |request|%>
 <li>
-Request Number: <%=request.request_id%><br>
+Request Number: <%=request.financial_request_id%><br>
 Amount: $<%=request.amount%><br>
 Status: <b><%=request.status%></b><br>
 </li>

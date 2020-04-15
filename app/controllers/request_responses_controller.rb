@@ -12,7 +12,10 @@ class RequestResponsesController < ApplicationController
       def create
         @request = FinancialRequest.find(response_params[:request_id])
         @respond = RequestResponse.new(response_params)
-        if @respond.save
+        
+        remaining = @request.money_needed - @respond.amount
+
+        if @respond.save && @request.update(money_needed: @respond.amount)
             redirect_to supporter_path(@respond.supporter_id)
         else
             flash[:error_messages] = @respond.errors.full_messages

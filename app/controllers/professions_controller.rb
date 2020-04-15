@@ -1,2 +1,0 @@
-class ProfessionsController < ApplicationController
-end

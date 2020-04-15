@@ -1,13 +1,8 @@
 <h1> Register a new Essential Worker </h1>
 <br>
 <br>
-<%if flash[:error_messages]%>
-    <%flash[:error_messages].each do |message|%>
-        <%=message%><br>
-    <%end%><br>    
-<%end%>
-<br>
-<br>
+<%= render partial: "layouts/flash", locals: {financial_request: @request, worker_id: @worker.id, status: "active"} %>
+
 
 <%=form_for @worker do |f| %>
 <%=f.label :username %>

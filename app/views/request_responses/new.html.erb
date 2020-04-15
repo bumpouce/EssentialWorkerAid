@@ -1,6 +1,6 @@
 <h1> Fulfill Request </h1>
 
-<p><%=@request.venmo_name%> needs $<%=@request.money_needed%> for <%=@request.title%>.</p>
+<p><font color="blue"><%=@request.venmo_name%></font> needs $<%=@request.money_needed%> for <%=@request.title%>.</p>
 <br>
 <%if flash[:error_messages]%>
     <%flash[:error_messages].each do |message|%>
@@ -10,10 +10,11 @@
 <br>
 <br>
 <%=form_for @respond do |f|%>
-    <%=f.label :request_id%> <%=f.hidden_field :request_id, :value=>@request.id%><br><br>
-    <%=f.label :supporter_id%> <%=f.hidden_field :supporter_id, :value=>@supporter_id%><br><br>
-    <%=f.label "Share"%> <%=f.number_field :amount, :value=>@request.money_needed%><br><br>
+    <%f.label :request_id%> <%=f.hidden_field :request_id, :value=>@request.id%>
+    <%f.label :supporter_id%> <%=f.hidden_field :supporter_id, :value=>@supporter_id%>
+    <%=f.label "Share $"%> <%=f.number_field :amount, :value=>@request.money_needed%><br><br>
+    <i> Please use the <font color="blue">@ username</font> to send them money by Venmo now.<br>They will confirm your support later.<br><br> </i>
     <%=f.label :message%> <%=f.text_field :message%><br><br>
-    <%=f.label :status%> <%=f.hidden_field :status, :value=>"pending"%><br><br>
+    <%f.label :status%> <%=f.hidden_field :status, :value=>"pending"%>
     <%=f.submit%>
 <%end%>
