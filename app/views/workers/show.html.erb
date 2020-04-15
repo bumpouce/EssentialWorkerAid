@@ -1,0 +1,16 @@
+<h1> Welcome, <%= @worker.full_name%> </h1>
+<br><br>
+<h2> Create a new financial request </h2>
+<%= render partial: "financial_requests/form", locals: {financial_request: @request, worker_id: @worker.id} %>
+
+<br><br>
+<h2> See your requests: </h2>
+<ul>
+<% @all_requests.each do |request|%>
+<li>
+$<%=link_to request.money_needed, financial_request_path(request.id)%> requested on <%=request.created_at%><br>
+<%=request.title%> | <%=request.description%><br>
+Status: <b><%=request.status%></b>
+</li>
+<%end%>
+</ul>

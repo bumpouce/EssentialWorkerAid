@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  password_digest: MyString
+  full_name: MyString
+  stress: 1
+  dependents: 1
+  field_of_work: MyString
+  neighborhood: MyString
+
+two:
+  username: MyString
+  password_digest: MyString
+  full_name: MyString
+  stress: 1
+  dependents: 1
+  field_of_work: MyString
+  neighborhood: MyString

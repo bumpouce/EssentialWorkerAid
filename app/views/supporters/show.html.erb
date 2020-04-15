@@ -1,0 +1,25 @@
+<h1> Welcome, <%= @supporter.full_name%> </h1>
+<br>
+<h2> Available Requests </h2>
+<ul>
+<% @requests.each do |request|%>
+<li>
+<%=request.worker.username%> requested $<%=request.money_needed%> to <%=request.venmo_name%><br>
+<%=request.title%> | <%=request.description%><br>
+Status: <b><%=request.status%> <%=link_to "Fill request", new_request_response_path(:request_id=>request.id)%></b>
+</li>
+<%end%>
+</ul>
+
+
+<h2> Your Fulilled/Pending Actions </h2>
+<ul>
+<% @myrequests.each do |request|%>
+<li>
+Request Number: <%=request.request_id%><br>
+Amount: $<%=request.amount%><br>
+Status: <b><%=request.status%></b><br>
+</li>
+<%end%>
+</ul>
+

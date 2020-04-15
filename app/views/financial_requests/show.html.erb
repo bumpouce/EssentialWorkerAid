@@ -1,0 +1,10 @@
+<h1> <%= @request.title %> for <%= @worker.full_name %> </h1>
+
+<ul>
+<% @responses.each do |response|%>
+<li>Supporter #<%= response.supporter_id %> sent you $<%= response.amount%> and says:<br>
+<%=response.message%> <br>
+<%= link_to "Confirm money received", edit_financial_request_path(id: response.request_id, response: response)%><br><br>
+</li>
+<%end%>
+</ul>

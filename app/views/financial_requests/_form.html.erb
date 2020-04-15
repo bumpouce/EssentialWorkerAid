@@ -1,0 +1,22 @@
+<%=form_for financial_request do |f|%>
+
+    <%=f.label :money_needed%>
+    <%=f.number_field :money_needed%>        
+
+    <%=f.label :venmo_name%>
+    <%=f.text_field :venmo_name%><br><br>
+
+    <%=f.label :title%>
+    <%=f.text_field :title%><br><br>
+
+    <%=f.label :description%>
+    <%=f.text_area :description %><br><br>
+
+
+    <%=f.hidden_field :worker_id, :value=>worker_id%>
+    <%=f.hidden_field :status, :value=>"active"%>
+
+    <%=f.hidden_field :updated_at, :value=>DateTime.now%>
+
+    <%=f.submit%>
+<%end%>
