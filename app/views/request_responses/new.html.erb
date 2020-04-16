@@ -2,15 +2,9 @@
 
 <p><font color="blue"><%=@request.venmo_name%></font> needs $<%=@request.money_needed%> for <%=@request.title%>.</p>
 <br>
-<%if flash[:error_messages]%>
-    <%flash[:error_messages].each do |message|%>
-        <%=message%><br>
-    <%end%><br>    
-<%end%>
-<br>
 <br>
 <%=form_for @respond do |f|%>
-    <%f.label :request_id%> <%=f.hidden_field :request_id, :value=>@request.id%>
+    <%f.label :financial_request_id%> <%=f.hidden_field :financial_request_id, :value=>@request.id%>
     <%f.label :supporter_id%> <%=f.hidden_field :supporter_id, :value=>@supporter_id%>
     <%=f.label "Share $"%> <%=f.number_field :amount, :value=>@request.money_needed%><br><br>
     <i> Please use the <font color="blue">@ username</font> to send them money by Venmo now.<br>They will confirm your support later.<br><br> </i>

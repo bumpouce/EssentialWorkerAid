@@ -1,0 +1,40 @@
+<h1>Welcome to EssentialWorkerAid</h1>
+<i>Connecting People</i>
+<br><br>
+<h2>For Essential Workers</h2>
+<%=link_to "Register a new Worker", new_worker_path%><br><br>
+or 
+<br>
+<p>Sign In</p>
+<%= form_tag '/worker_sign_in' do %>
+  <p>
+    <%= label_tag 'Username:' %><br />
+    <%= text_field_tag :username %>
+  </p>
+  <p>
+    <%= label_tag 'Password:' %><br />
+    <%= password_field_tag :password %>
+  </p>
+  <p>
+    <%= submit_tag 'Sign In' %> 
+  </p>
+<% end %>
+
+---------------------------------------<br><br>
+<h2>For Supporters</h2>
+<%=link_to "Register a new Supporter", new_supporter_path%><br><br>
+or
+<p>Sign In</p>
+<%= form_tag '/supporter_sign_in' do %>
+  <p>
+    <%= label_tag 'Username:' %><br />
+    <%= text_field_tag :username %>
+  </p>
+  <p>
+    <%= label_tag 'Password:' %><br />
+    <%= password_field_tag :password %>
+  </p>
+  <p>
+    <%= submit_tag 'Sign In' %> 
+  </p>
+<% end %>

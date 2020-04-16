@@ -8,7 +8,7 @@
 <li>
 <%=request.worker.username%> requested $<%=request.money_needed%> to <%=request.venmo_name%><br>
 <%=request.title%> | <%=request.description%><br>
-Status: <b><%=request.status%><br> <%=link_to "Support this person", new_request_response_path(:request_id=>request.id)%></b><br><br>
+Status: <b><%=request.status%><br> <%=link_to "Support this person", new_request_response_path(:financial_request_id=>request.id)%></b><br><br>
 </li>
 <%end%>
 </ul>

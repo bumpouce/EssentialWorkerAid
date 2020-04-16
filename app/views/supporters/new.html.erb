@@ -1,20 +1,12 @@
 <h1> Register a new Supporter </h1>
 <br>
 <br>
-<%if flash[:error_messages]%>
-    <%flash[:error_messages].each do |message|%>
-        <%=message%><br>
-    <%end%><br>    
-<%end%>
-<br>
-<br>
 
 <%=form_for @supporter do |f| %>
 <%=f.label :username %>
 <%=f.text_field :username %><br><br>
 <%=f.label "Password"%>
-<%=f.password_field :password_digest%><br><br>
-[add password confirmation]<br><br>
+<%=f.password_field :password%><br><br>
 <%=f.label :full_name %>
 <%=f.text_field :full_name %><br><br>
 <%=f.submit%>

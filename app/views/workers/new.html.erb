@@ -1,15 +1,12 @@
 <h1> Register a new Essential Worker </h1>
 <br>
 <br>
-<%= render partial: "layouts/flash", locals: {financial_request: @request, worker_id: @worker.id, status: "active"} %>
-
 
 <%=form_for @worker do |f| %>
 <%=f.label :username %>
 <%=f.text_field :username %><br><br>
 <%=f.label "Password"%>
-<%=f.password_field :password_digest%><br><br>
-[add password confirmation]<br><br>
+<%=f.password_field :password%><br><br>
 <%=f.label :full_name %>
 <%=f.text_field :full_name %><br><br>
 <%=f.label "Stress Level"%> &#128556

@@ -1,5 +1,6 @@
 class SupportersController < ApplicationController
-
+    before_action :require_login, :is_supporter?
+    skip_before_action :require_login, only: [:new, :create]
 
     def index
     end
@@ -10,8 +11,9 @@ class SupportersController < ApplicationController
 
     def create
         @supporter = Supporter.new(supporter_params)
-
         if @supporter.save
+            session[:user_id] = @supporter.id
+            session[:user_type] = "supporter"
             redirect_to supporter_path(@supporter.id)
         else
             flash[:error_messages] = @supporter.errors.full_messages
@@ -20,24 +22,25 @@ class SupportersController < ApplicationController
         end
     end
 
-    def edit
-    end
-
-    def update
-    end
-
     def show
-        @supporter = Supporter.find(params[:id])
-        session[:user] = @supporter.id
+        @supporter = current_user
+        @supporter_id = @supporter.id
         @stats = @supporter.statistics
-        @requests = FinancialRequest.where(status: "active").order("created_at DESC")
-        @myrequests = RequestResponse.where(supporter_id: @supporter.id)
+        @requests = FinancialRequest.order("updated_at DESC")
+        @myrequests = RequestResponse.where(supporter_id: @supporter_id)
     end
 
     private
 
     def supporter_params
-        params.require(:supporter).permit(:username, :password_digest, :full_name)
+        params.require(:supporter).permit(:username, :password, :confirm_password, :full_name)
     end
 
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
+    end
+
+    def is_supporter?
+        user_type == "supporter"
+    end
 end

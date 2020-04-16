@@ -1,4 +1,6 @@
 class WorkersController < ApplicationController
+    before_action :require_login, :is_worker?
+    skip_before_action :require_login, only: [:new, :create]
 
     def index
     end
@@ -11,8 +13,9 @@ class WorkersController < ApplicationController
 
     def create
         @worker = Worker.new(worker_params)
-
         if @worker.save
+            session[:user_id] = @worker.id
+            session[:user_type] = "worker"
             redirect_to worker_path(@worker.id)
         else
             flash[:error_messages] = @worker.errors.full_messages
@@ -30,8 +33,8 @@ class WorkersController < ApplicationController
     end
 
     def show
-        @worker = Worker.find(params[:id])
-        session[:user] = @worker
+        @worker = current_user
+        session[:user_id] = @worker.id
         @request = FinancialRequest.new
         @stats = @worker.statistics
         @all_requests = @worker.financial_requests.order("created_at DESC")
@@ -40,7 +43,14 @@ class WorkersController < ApplicationController
     private
 
     def worker_params
-        params.require(:worker).permit(:username, :password_digest, :full_name, :stress, :dependents, :field_of_work, :neighborhood)
+        params.require(:worker).permit(:username, :password, :confirm_password, :full_name, :stress, :dependents, :field_of_work, :neighborhood)
     end
 
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
+    end
+
+    def is_worker?
+        user_type == "worker"
+    end
 end
