@@ -1,5 +1,6 @@
 class WorkersController < ApplicationController
-    before_action :require_login, :is_worker?
+    before_action :require_login
+    before_action :is_worker?
     skip_before_action :require_login, only: [:new, :create]
 
     def index

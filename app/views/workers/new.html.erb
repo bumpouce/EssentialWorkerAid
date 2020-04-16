@@ -2,18 +2,4 @@
 <br>
 <br>
 
-<%=form_for @worker do |f| %>
-<%=f.label :username %>
-<%=f.text_field :username %><br><br>
-<%=f.label "Password"%>
-<%=f.password_field :password%><br><br>
-<%=f.label :full_name %>
-<%=f.text_field :full_name %><br><br>
-<%=f.label "Stress Level"%> &#128556
-<%=f.range_field :stress, :in => 0..5, :step => '.5' %> &#128561 <br><br>
-<%=f.label :dependents %>
-<%=f.number_field :dependents, :in => 0..30, :step => '1'%><br><br>
-Profession <%=f.collection_select :field_of_work, @professions, :id, :category%><br><br>
-Neighborhood <%=f.collection_select :neighborhood, @neighborhoods, :id, :region%><br><br>
-<%=f.submit%>
-<%end%>
+<%= render partial: "form", locals: {worker: @worker} %>

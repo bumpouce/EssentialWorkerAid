@@ -1,5 +1,6 @@
 class SupportersController < ApplicationController
-    before_action :require_login, :is_supporter?
+    before_action :require_login
+    before_action :is_supporter?
     skip_before_action :require_login, only: [:new, :create]
 
     def index
@@ -26,7 +27,7 @@ class SupportersController < ApplicationController
         @supporter = current_user
         @supporter_id = @supporter.id
         @stats = @supporter.statistics
-        @requests = FinancialRequest.order("updated_at DESC")
+        @requests = FinancialRequest.where(status: "active").order("updated_at DESC")
         @myrequests = RequestResponse.where(supporter_id: @supporter_id)
     end
 
