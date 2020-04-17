@@ -11,16 +11,14 @@
 
   <body>
     <%if flash[:notice]%>
-        <%=flash[:notice]%>
-    <%end%><br><br>
+        <%=flash[:notice]%><br><br>
+    <%end%>
 
     <%if flash[:error_messages]%>
       <%flash[:error_messages].each do |message|%>
-        <%=message%><br>
-      <%end%><br>    
+        <%=message%><br><br>
+      <%end%>    
     <%end%>
-
-    <br><br>
 
     <%= yield %>
 

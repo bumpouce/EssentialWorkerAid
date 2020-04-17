@@ -26,18 +26,19 @@ class FinancialRequestsController < ApplicationController
     def edit
         @request = FinancialRequest.find(params[:id])
         session[:response] = params[:response]
+        @response = RequestResponse.find(session[:response])
     end
 
     def update
         @request = FinancialRequest.find(params[:id])
         @response = RequestResponse.find(session[:response])
+        # @request.money_needed -= @response.amount
 
         @response.update(status: "received")
-        @request.money_needed -= @response.amount
         (@request.money_needed <= 0)? @request.status="fulfilled" : @request.status
-        session[:response] = ""
 
         if @request.save
+            session[:response] = ""
             redirect_to worker_path(@request.worker_id)
         else
             flash[:error_messages] = @request.errors.full_messages

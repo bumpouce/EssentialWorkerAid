@@ -4,8 +4,9 @@ class WorkersController < ApplicationController
     skip_before_action :require_login, only: [:new, :create]
 
     def index
-        @kudos = Kudo.all
-        @professions = Profession.all
+        profession = Profession.find(current_user.field_of_work)
+        @mykudos = Kudo.select_kudos_by(profession.category)
+        @generalkudos = Kudo.select_kudos_by("General")
     end
 
     def new

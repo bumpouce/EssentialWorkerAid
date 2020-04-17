@@ -13,20 +13,47 @@
  *= require_tree .
  *= require_self
  */
+
+ .jumbotron{
+    background-image: url("https://approachable-leadership.s3.amazonaws.com/wp-content/uploads/2016/02/14220225/iStock_000063294013_Medium-1080x675.jpg");
+    background-size: cover;
+    background-position: center center;
+    min-height: 300px;
+    padding: 5em inherit;
+    left:8px;
+    color:#fff;
+}
+
+.display-4, .lead {
+    padding-right: 10px;
+    color: whitesmoke;
+    text-align: right;
+}
+
  h1 {
     text-align: center;
  }
 
+ .body {
+     position: center;
+    height: 400px;
+    overflow: auto
+  }
+
 .new_request_response {
-    position: absolute;
-    left: 40%;
-    top: 35%; 
+    background-color: deepskyblue;
+    width: 100%;
+    padding: 20px;
+    position: center;
+    text-align: center;
 }
 
 .new_worker, .new_supporter {
-    position: absolute;
-    left: 40%;
-    top: 25%; 
+    background-color: deepskyblue;
+    width: 100%;
+    padding: 20px;
+    position: center;
+    text-align: center;
 }
 
 .show_worker {
@@ -57,7 +84,7 @@ footer{
  }
 
  table {
-     width: 100%;
+    width: 100%;
     border: 1px blue;
     background-color: deepskyblue;
  }

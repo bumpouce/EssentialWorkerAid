@@ -1,4 +1,7 @@
 <ul id="navbar">
-  <li ><%= link_to "Home", home %></li>
-  <li ><%= link_to "Log Out", logout_path%> </li>
+<%if session[:user_id]%>
+  <li><%= link_to "My Home", home %></li>
+  <li><%= link_to "Log Out", logout_path%> </li>
+<%end%>
+  <li><%= link_to "Site Home", root_path%>
 </ul>

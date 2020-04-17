@@ -5,6 +5,22 @@
 <h2 id="display">Kudos!</h2>
 <br><br>
 
-<%@kudos.each do |kudo|%>
-    <%=render partial: "kudos/show", locals: {kudos: kudo} %>
+
+<div class="body">
+<table>
+<th><h3>About my field:</h3></th>
+<th><h3>General Kudos for essential workers:</h3></th>
+<tr>
+<td>
+<%@mykudos.each do |kudo|%>
+    <p><%=render partial: "kudos/show", locals: {kudos: kudo} %></p>
 <%end%>
+</td>
+<td>
+<%@generalkudos.each do |kudo|%>
+    <p><%=render partial: "kudos/show", locals: {kudos: kudo} %></p>
+<%end%>
+</td>
+</tr>
+</table>
+</div>

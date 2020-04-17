@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
             session[:user_type] = "worker"
             redirect_to worker_path(@worker.id)
         else
+            flash[:notice] = "Invalid Username or Password"
             redirect_to root_path
         end
     end
@@ -33,6 +34,7 @@ class SessionsController < ApplicationController
             session[:user_type] = "supporter"
             redirect_to supporter_path(@supporter.id)
         else
+            flash[:notice] = "Invalid Username or Password"
             redirect_to root_path
         end
    end

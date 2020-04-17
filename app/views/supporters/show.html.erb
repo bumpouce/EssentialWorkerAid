@@ -2,7 +2,8 @@
 <p><i> You have provided $<%=@stats%> in support!</i></p>
 <br><br>
 
-<table style="width:100%">
+<div class="body">
+<table>
 <tr>
     <th><h2 id="supporter"> Available Requests </h2>
     <i>Most recent needs are listed first.</i></th>
@@ -13,7 +14,6 @@
 
     <th><h2> Give Essential Workers Kudos! </h2></th>
 </tr>
-
 <tr>
 <td>
 <% @requests.each do |request|%>
@@ -40,3 +40,4 @@ Status: <b><%=request.status%></b><br>
 <p><%= render partial: "kudos/form", locals: {kudos: @kudos, professions: @professions, supporter_id: @supporter_id} %></p>
 <td></tr>
 </table>
+</div>
