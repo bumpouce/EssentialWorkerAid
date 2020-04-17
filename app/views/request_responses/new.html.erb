@@ -1,14 +1,6 @@
 <h1> Fulfill Request </h1>
-
-<p><font color="blue"><%=@request.venmo_name%></font> needs $<%=@request.money_needed%> for <%=@request.title%>.</p>
-<br>
-<br>
-<%=form_for @respond do |f|%>
-    <%f.label :financial_request_id%> <%=f.hidden_field :financial_request_id, :value=>@request.id%>
-    <%f.label :supporter_id%> <%=f.hidden_field :supporter_id, :value=>@supporter_id%>
-    <%=f.label "Share $"%> <%=f.number_field :amount, :value=>@request.money_needed%><br><br>
-    <i> Please use the <font color="blue">@ username</font> to send them money by Venmo now.<br>They will confirm your support later.<br><br> </i>
-    <%=f.label :message%> <%=f.text_field :message%><br><br>
-    <%f.label :status%> <%=f.hidden_field :status, :value=>"pending"%>
-    <%=f.submit%>
+<p>
+<%if :financial_request_id%>
+<%= render partial: "financial_form", locals: {request: @request, respond: @respond, supporter_id: @supporter_id} %>
 <%end%>
+</p>

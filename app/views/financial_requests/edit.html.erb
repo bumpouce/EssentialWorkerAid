@@ -1,5 +1,5 @@
-<h2> Update this request </h2>
+<h2 class="show_worker"> Update this request </h2>
 
-<i>This is the updated amount you need, and will refresh your request after you click update.</i>
+<p><i>This is the updated amount you need, and will refresh your request after you click update.</i></p>
 <br><br>
 <%= render partial: "financial_requests/form", locals: {financial_request: @request, worker_id: @request.worker_id, status: "updated"} %>

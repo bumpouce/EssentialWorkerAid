@@ -5,23 +5,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+   </head>
 
   <body>
+    <%if flash[:notice]%>
+        <%=flash[:notice]%>
+    <%end%><br><br>
 
     <%if flash[:error_messages]%>
       <%flash[:error_messages].each do |message|%>
         <%=message%><br>
       <%end%><br>    
     <%end%>
+
     <br><br>
 
     <%= yield %>
 
-    <%#if session[:user]%>
-     <br><br> <h2> <%= link_to "Log Out", logout_path%> </h2>
-    <%#end%>
+    <footer><%=render partial: "layouts/nav_bar"%></footer>
   </body>
 </html>

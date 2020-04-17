@@ -4,6 +4,8 @@ class WorkersController < ApplicationController
     skip_before_action :require_login, only: [:new, :create]
 
     def index
+        @kudos = Kudo.all
+        @professions = Profession.all
     end
 
     def new
@@ -39,6 +41,7 @@ class WorkersController < ApplicationController
         @request = FinancialRequest.new
         @stats = @worker.statistics
         @all_requests = @worker.financial_requests.order("created_at DESC")
+        @professions = Profession.all
     end
 
     private

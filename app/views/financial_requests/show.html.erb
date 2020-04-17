@@ -1,12 +1,16 @@
 <h1> <%= @request.title %> for <%= @worker.full_name %> </h1>
+<br>
+<%if @responses %>
+    <% @responses.each do |response|%>
 
-<ul>
-<% @responses.each do |response|%>
-<li>Supporter #<%= response.supporter_id %> sent you $<%= response.amount%> and says:<br>
-<%=response.message%> <br>
+    <p>Supporter #<%= response.supporter_id %> sent you $<%= response.amount%> and says:<br>
+    <%=response.message%> </p>
 
-<i>Please check your venmo account.  If you received this aid, please click this link:<br></i>
-<%= link_to "Confirm money received", edit_financial_request_path(id: response.financial_request_id, :response=> response)%><br><br>
-</li>
+    <p><i>Please check your venmo account.  If you received this aid, please click this link:<br></i>
+    <%= link_to "Confirm money received", edit_financial_request_path(id: response.financial_request_id, :response=> response)%></p>
+    <br><br>
+
+    <%end%>
+<%else%>
+    <p>You have no pending responses for this request.</p>
 <%end%>
-</ul>

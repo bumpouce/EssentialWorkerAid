@@ -27,6 +27,8 @@ class SupportersController < ApplicationController
         @supporter = current_user
         @supporter_id = @supporter.id
         @stats = @supporter.statistics
+        @kudos = Kudo.new
+        @professions = Profession.all
         @requests = FinancialRequest.where(status: "active").order("updated_at DESC")
         @myrequests = RequestResponse.where(supporter_id: @supporter_id)
     end

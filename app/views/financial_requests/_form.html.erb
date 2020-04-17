@@ -1,21 +1,51 @@
 <%=form_for financial_request do |f|%>
+<table>
 
+<tr>
+<td id="req_form">
     <%=f.label :money_needed%>
-    <%=f.number_field :money_needed%>        
+</td>
+<td>
+    <%=f.number_field :money_needed%>    
+</td>
+</tr>
 
+<tr>
+<td id="req_form">
     <%=f.label :venmo_name%>
-    <%=f.text_field :venmo_name%><br><br>
+</td>
+<td>
+    <%=f.text_field :venmo_name%>
+</td>
+</tr>
 
+<tr>
+<td id="req_form">
     <%=f.label :title%>
-    <%=f.text_field :title%><br><br>
+</td>
+<td>
+    <%=f.text_field :title%>
+</td>
+</tr>
 
+<tr>
+<td id="req_form">
     <%=f.label :description%>
-    <%=f.text_area :description %><br><br>
+</td>
+<td>
+    <%=f.text_area :description %>
+</td>
+</tr>
 
-
+<tr>
+<td>
     <%=f.hidden_field :worker_id, :value=>worker_id%>
     <%=f.hidden_field :status, :value=>"active"%>
     <%=f.hidden_field :updated_at, :value=>DateTime.now%>
-
+</td>
+<td>
     <%=f.submit%>
+</td>
+</tr>
+</table>
 <%end%>

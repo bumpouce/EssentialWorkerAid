@@ -3,7 +3,7 @@ class FinancialRequestsController < ApplicationController
     def show
         @request = FinancialRequest.find(params[:id])
         @worker = Worker.find(@request[:worker_id])
-        @responses = RequestResponse.where(financial_request_id: @request.id)
+        @responses = RequestResponse.where(financial_request_id: @request.id, status:"pending")
     end
 
     def new

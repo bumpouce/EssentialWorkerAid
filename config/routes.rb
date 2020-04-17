@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :kudos
   root to: 'sessions#index'
   
   get "worker_sign_in" => "sessions#worker_sign_in"
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   post "supporter_sign_in" => "sessions#supporter_login"
 
   get "logout" => "sessions#destroy"
+  get "remove_kudo" => "kudos#destroy"
 
   resources :supporters
   resources :workers

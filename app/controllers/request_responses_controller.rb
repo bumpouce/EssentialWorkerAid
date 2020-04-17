@@ -14,8 +14,8 @@ class RequestResponsesController < ApplicationController
         @respond = RequestResponse.new(response_params)
         
         remaining = @request.money_needed - @respond.amount
-# byebug
         if @respond.save && @request.update(money_needed: remaining)
+            flash[:notice] = "Response to financial request sent successfully!"
             redirect_to supporter_path(@respond.supporter_id)
         else
             flash[:error_messages] = @respond.errors.full_messages
